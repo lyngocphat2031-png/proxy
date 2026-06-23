@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ProxyVIP Activator - Full Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            padding: 12px;
+            min-height: 100vh;
+        }
+        .app-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #0f0f1a;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255,140,0,0.05);
+            border: 1px solid #1a1a2a;
+        }
+        /* HEADER */
+        .app-header {
+            background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid #2a2a3a;
+            position: relative;
+        }
+        .app-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .app-header .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #ff8c00, #ff6a00);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: #0a0a0f;
+            box-shadow: 0 4px 15px rgba(255,140,0,0.3);
+        }
+        .app-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .app-header .sub {
+            font-size: 11px;
+            color: #888;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .app-header .sub .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #27ae60;
+            animation: pulse-dot 1.5s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
+        .header-stats {
+            display: flex;
+            gap: 16px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #1a1a2a;
+        }
+        .header-stats .stat {
+            flex: 1;
+            text-align: center;
+        }
+        .header-stats .stat .num {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff8c00;
+        }
+        .header-stats .stat .label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 2px;
+            background: #0a0a0f;
+            padding: 6px 12px;
+            border-bottom: 1px solid #1a1a2a;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 10px 0;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+            color: #666;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .tab-btn .badge-tab {
+            background: #2a2a3a;
+            color: #aaa;
+            font-size: 9px;
+            padding: 1px 8px;
+            border-radius: 10px;
+        }
+        .tab-btn.active {
+            background: #ff8c00;
+            color: #0a0a0f;
+        }
+        .tab-btn.active .badge-tab {
+            background: #0a0a0f;
+            color: #ff8c00;
+        }
+        .tab-btn:not(.active):hover {
+            color: #fff;
+        }
+
+        /* PANELS */
+        .panel {
+            display: none;
+            padding: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+        .panel.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FORM */
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #2a2a3a;
+            border-radius: 12px;
+            background: #14141e;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #ff8c00;
+        }
+        .form-group input::placeholder {
+            color: #444;
+        }
+        .form-group select option {
+            background: #14141e;
+        }
+
+        /* STATUS */
+        .status-box {
+            background: #14141e;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 12px 0 16px;
+            font-size: 13px;
+            border-left: 4px solid #ff8c00;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            word-break: break-word;
+        }
+        .status-box .icon { font-size: 18px; flex-shrink: 0; }
+        .status-box.success { border-left-color: #27ae60; background: #14141e; }
+        .status-box.error { border-left-color: #c0392b; }
+        .status-box.loading { border-left-color: #f39c12; }
+
+        /* BUTTONS */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 12px 0;
+        }
+        .btn-row {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-row .btn { flex: 1; }
+        .btn {
+            padding: 13px 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+        }
+        .btn:active { transform: scale(0.96); }
+        .btn:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .btn-primary { background: #ff8c00; color: #0a0a0f; }
+        .btn-primary:hover { background: #e67e00; }
+        .btn-secondary { background: #2a2a3a; color: #fff; }
+        .btn-secondary:hover { background: #3a3a4a; }
+        .btn-danger { background: #c0392b; color: #fff; }
+        .btn-danger:hover { background: #a93226; }
+        .btn-success { background: #27ae60; color: #fff; }
+        .btn-success:hover { background: #1e8449; }
+        .btn-purple { background: #8e44ad; color: #fff; }
+        .btn-purple:hover { background: #7d3c98; }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #2a2a3a;
+            color: #aaa;
+        }
+        .btn-outline:hover { border-color: #ff8c00; color: #fff; }
+        .btn-sm { padding: 8px 14px; font-size: 12px; }
+
+        /* RESULT CARD */
+        .result-card {
+            background: #14141e;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 12px 0;
+            border: 1px solid #1a1a2a;
+            display: none;
+        }
+        .result-card.show { display: block; }
+        .result-card .title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #27ae60;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .result-card .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 0;
+            border-bottom: 1px solid #0f0f1a;
+            font-size: 13px;
+        }
+        .result-card .row:last-child { border-bottom: none; }
+        .result-card .label { color: #666; }
+        .result-card .value { color: #fff; font-weight: 600; }
+        .result-card .value.green { color: #27ae60; }
+        .result-card .value.orange { color: #ff8c00; }
+
+        /* LOGS */
+        .log-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .log-toolbar .badge {
+            background: #2a2a3a;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #aaa;
+        }
+        .log-container {
+            background: #0a0a0f;
+            border-radius: 12px;
+            padding: 10px;
+            max-height: 320px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.7;
+            border: 1px solid #1a1a2a;
+        }
+        .log-container::-webkit-scrollbar { width: 4px; }
+        .log-container::-webkit-scrollbar-track { background: #0a0a0f; }
+        .log-container::-webkit-scrollbar-thumb { background: #ff8c00; border-radius: 4px; }
+        .log-entry { padding: 2px 0; border-bottom: 1px solid #0f0f1a; }
+        .log-entry .time { color: #444; margin-right: 8px; }
+        .log-entry .msg-green { color: #27ae60; }
+        .log-entry .msg-red { color: #c0392b; }
+        .log-entry .msg-orange { color: #ff8c00; }
+        .log-entry .msg-blue { color: #3498db; }
+        .log-entry .msg-purple { color: #8e44ad; }
+
+        /* WEBVIEW */
+        .webview-frame {
+            width: 100%;
+            height: 460px;
+            border: 1px solid #2a2a3a;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #0a0a0f;
+            margin-top: 10px;
+        }
+        .webview-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* MANAGEMENT TABLE */
+        .mgmt-toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .mgmt-toolbar .btn { flex: 1; min-width: 80px; }
+        .mgmt-list {
+            background: #0a0a0f;
+            border-radius: 12px;
+            border: 1px solid #1a1a2a;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .mgmt-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            border-bottom: 1px solid #14141e;
+            font-size: 13px;
+        }
+        .mgmt-item:last-child { border-bottom: none; }
+        .mgmt-item .info { display: flex; flex-direction: column; gap: 2px; }
+        .mgmt-item .info .uid { color: #fff; font-weight: 600; }
+        .mgmt-item .info .key { color: #666; font-size: 11px; font-family: monospace; }
+        .mgmt-item .status-badge {
+            font-size: 10px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .mgmt-item .status-badge.active { background: #27ae60; color: #fff; }
+        .mgmt-item .status-badge.inactive { background: #2a2a3a; color: #888; }
+        .mgmt-item .status-badge.expired { background: #c0392b; color: #fff; }
+        .mgmt-item .actions { display: flex; gap: 6px; }
+        .mgmt-item .actions .btn-sm { padding: 4px 10px; font-size: 10px; border-radius: 8px; }
+
+        /* UTILITY */
+        .mt-8 { margin-top: 8px; }
+        .mt-12 { margin-top: 12px; }
+        .mb-8 { margin-bottom: 8px; }
+        .text-center { text-align: center; }
+        .text-muted { color: #555; font-size: 11px; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .gap-8 { gap: 8px; }
+        .hidden { display: none !important; }
+
+        @media (max-width: 400px) {
+            .app-header h1 { font-size: 17px; }
+            .btn { font-size: 12px; padding: 11px 12px; }
+            .webview-frame { height: 360px; }
+            .mgmt-item { flex-wrap: wrap; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- ===== HEADER ===== -->
+    <div class="app-header">
+        <div class="logo">
+            <div class="logo-icon">🔓</div>
+            <div>
+                <h1>ProxyVIP Activator</h1>
+                <div class="sub">
+                    <span class="dot"></span>
+                    <span>Hệ thống quản lý & bypass</span>
+                    <span style="color:#444;">|</span>
+                    <span id="onlineStatus" style="color:#27ae60;">Online</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="stat">
+                <div class="num" id="statTotal">0</div>
+                <div class="label">Tổng UID</div>
+            </div>
+            <div class="stat">
+                <div class="num" id="statActive">0</div>
+                <div class="label">Đã kích hoạt</div>
+            </div>
+            <div class="stat">
+                <div class="num" id="statBypass">0</div>
+                <div class="label">Bypass</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TABS ===== -->
+    <div class="tabs" id="tabHeaders">
+        <button class="tab-btn active" data-tab="tabActivate">⚡ Kích hoạt</button>
+        <button class="tab-btn" data-tab="tabManage">📊 Quản lý</button>
+        <button class="tab-btn" data-tab="tabLogs">📋 Logs</button>
+        <button class="tab-btn" data-tab="tabWebview">🌐 Web</button>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- PANEL 1: KÍCH HOẠT -->
+    <!-- ========================================================== -->
+    <div class="panel active" id="tabActivate">
+        <div class="form-group">
+            <label>🔑 UID (Tài khoản game)</label>
+            <input type="text" id="uidInput" placeholder="Nhập UID cần kích hoạt..." inputmode="numeric">
+        </div>
+        <div class="form-group">
+            <label>🔐 Custom Key (để trống tự sinh)</label>
+            <input type="text" id="keyInput" placeholder="VIP-XXXXXX-XXXXXX">
+        </div>
+
+        <div class="status-box" id="statusBox">
+            <span class="icon">⏳</span>
+            <span id="statusText">Sẵn sàng</span>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-primary" id="btnActivate">🚀 Kích hoạt với Key</button>
+            <div class="btn-row">
+                <button class="btn btn-secondary" id="btnBrute">🔨 Brute Force (50 key)</button>
+                <button class="btn btn-success" id="btnBypass">⚡ Local Bypass</button>
+            </div>
+            <button class="btn btn-purple" id="btnGenKey">🎲 Tạo Key ngẫu nhiên</button>
+        </div>
+
+        <div class="result-card" id="resultCard">
+            <div class="title">✅ Kích hoạt thành công</div>
+            <div class="row"><span class="label">UID</span><span class="value green" id="resUid">---</span></div>
+            <div class="row"><span class="label">Key</span><span class="value orange" id="resKey">---</span></div>
+            <div class="row"><span class="label">Hết hạn</span><span class="value" id="resExpired">---</span></div>
+            <div class="row"><span class="label">VIP Level</span><span class="value" id="resVip">---</span></div>
+            <div class="row"><span class="label">Trạng thái</span><span class="value green" id="resStatus">Active</span></div>
+        </div>
+
+        <div class="text-center mt-8">
+            <button class="btn btn-danger btn-sm" id="btnReset" style="padding:8px 24px;">🔄 Reset</button>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- PANEL 2: QUẢN LÝ -->
+    <!-- ========================================================== -->
+    <div class="panel" id="tabManage">
+        <div class="mgmt-toolbar">
+            <button class="btn btn-primary btn-sm" id="btnAddUID">➕ Thêm UID</button>
+            <button class="btn btn-success btn-sm" id="btnBypassAll">⚡ Bypass tất cả</button>
+            <button class="btn btn-danger btn-sm" id="btnClearAll">🗑️ Xóa tất cả</button>
+        </div>
+        <div class="form-group" style="margin-bottom:10px;">
+            <input type="text" id="mgmtSearch" placeholder="🔍 Tìm kiếm UID hoặc Key..." style="padding:10px 14px; font-size:13px;">
+        </div>
+        <div class="mgmt-list" id="mgmtList">
+            <div style="text-align:center;padding:30px;color:#444;font-size:13px;">
+                Chưa có dữ liệu. Hãy kích hoạt hoặc thêm UID.
+            </div>
+        </div>
+        <div class="flex-between mt-8">
+            <span class="text-muted" id="mgmtCount">0 UID</span>
+            <button class="btn btn-outline btn-sm" id="btnExportData">📤 Export JSON</button>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- PANEL 3: LOGS -->
+    <!-- ========================================================== -->
+    <div class="panel" id="tabLogs">
+        <div class="log-toolbar">
+            <span class="badge" id="logCount">0 logs</span>
+            <div style="display:flex;gap:6px;">
+                <button class="btn btn-outline btn-sm" id="btnClearLogs">🗑️ Xóa</button>
+            </div>
+        </div>
+        <div class="log-container" id="logContainer">
+            <div class="log-entry"><span class="time">[--:--:--]</span> <span class="msg-blue">📌 Hệ thống sẵn sàng</span></div>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- PANEL 4: WEBVIEW BYPASS -->
+    <!-- ========================================================== -->
+    <div class="panel" id="tabWebview">
+        <div class="btn-row">
+            <button class="btn btn-secondary btn-sm" id="btnReloadWebview">🔄 Tải lại</button>
+            <button class="btn btn-primary btn-sm" id="btnInjectScript">💉 Inject Bypass</button>
+            <button class="btn btn-success btn-sm" id="btnAutoInject">🤖 Auto Inject</button>
+        </div>
+        <div class="webview-frame" id="webviewFrame">
+            <iframe id="bypassIframe" src="https://chunchuche.io.vn/v2/activate.php"></iframe>
+        </div>
+        <p class="text-muted text-center mt-8">⚠️ Script sẽ tự động điền key giả và kích hoạt</p>
+    </div>
+
+</div>
+
+<!-- ========================================================== -->
+<!-- JAVASCRIPT - FULL LOGIC -->
+<!-- ========================================================== -->
+<script>
+    (function() {
+        'use strict';
+
+        // ---- DOM refs ----
+        const uidInput = document.getElementById('uidInput');
+        const keyInput = document.getElementById('keyInput');
+        const statusBox = document.getElementById('statusBox');
+        const statusText = document.getElementById('statusText');
+        const resultCard = document.getElementById('resultCard');
+        const resUid = document.getElementById('resUid');
+        const resKey = document.getElementById('resKey');
+        const resExpired = document.getElementById('resExpired');
+        const resVip = document.getElementById('resVip');
+        const resStatus = document.getElementById('resStatus');
+        const logContainer = document.getElementById('logContainer');
+        const logCount = document.getElementById('logCount');
+        const mgmtList = document.getElementById('mgmtList');
+        const mgmtCount = document.getElementById('mgmtCount');
+        const mgmtSearch = document.getElementById('mgmtSearch');
+        const statTotal = document.getElementById('statTotal');
+        const statActive = document.getElementById('statActive');
+        const statBypass = document.getElementById('statBypass');
+
+        const btnActivate = document.getElementById('btnActivate');
+        const btnBrute = document.getElementById('btnBrute');
+        const btnBypass = document.getElementById('btnBypass');
+        const btnGenKey = document.getElementById('btnGenKey');
+        const btnReset = document.getElementById('btnReset');
+        const btnClearLogs = document.getElementById('btnClearLogs');
+        const btnReloadWebview = document.getElementById('btnReloadWebview');
+        const btnInjectScript = document.getElementById('btnInjectScript');
+        const btnAutoInject = document.getElementById('btnAutoInject');
+        const btnAddUID = document.getElementById('btnAddUID');
+        const btnBypassAll = document.getElementById('btnBypassAll');
+        const btnClearAll = document.getElementById('btnClearAll');
+        const btnExportData = document.getElementById('btnExportData');
+        const bypassIframe = document.getElementById('bypassIframe');
+
+        // ---- State ----
+        let database = []; // { uid, key, expired, vip, status, bypassed, timestamp }
+        let logs = [];
+        let isLoading = false;
+        let isActivated = false;
+        let currentResult = null;
+        let autoInjectTimer = null;
+
+        // ---- Constants ----
+        const BASE_URL = 'https://chunchuche.io.vn/v2/activate.php';
+        const STORAGE_KEY = 'proxyvip_db';
+
+        // ---- Load saved data ----
+        function loadDatabase() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    database = JSON.parse(saved);
+                    if (!Array.isArray(database)) database = [];
+                }
+            } catch(e) { database = []; }
+            renderManagement();
+            updateStats();
+        }
+
+        function saveDatabase() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(database));
+            } catch(e) {}
+            renderManagement();
+            updateStats();
+        }
+
+        // ---- Helpers ----
+        function generateFakeKey() {
+            const prefix = 'VIP';
+            const suffix = String(Date.now()).slice(-6);
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let rand = '';
+            for (let i = 0; i < 8; i++) {
+                rand += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return prefix + '-' + rand + '-' + suffix;
+        }
+
+        function generateFakeUID() {
+            return String(Math.floor(100000000 + Math.random() * 900000000));
+        }
+
+        function getTimestamp() {
+            return new Date().toISOString().replace('T', ' ').slice(0, 19);
+        }
+
+        function setStatus(message, type) {
+            statusText.textContent = message;
+            statusBox.className = 'status-box';
+            if (type === 'success') statusBox.classList.add('success');
+            else if (type === 'error') statusBox.classList.add('error');
+            else if (type === 'loading') statusBox.classList.add('loading');
+            const icon = statusBox.querySelector('.icon');
+            if (type === 'success') icon.textContent = '✅';
+            else if (type === 'error') icon.textContent = '❌';
+            else if (type === 'loading') icon.textContent = '⏳';
+            else icon.textContent = '⏳';
+        }
+
+        function addLog(message, type) {
+            const time = new Date().toLocaleTimeString('vi-VN', { hour12: false });
+            logs.unshift({ time, message, type: type || 'info' });
+            if (logs.length > 500) logs.pop();
+            renderLogs();
+        }
+
+        function renderLogs() {
+            logContainer.innerHTML = logs.map(e => {
+                let cls = 'msg-blue';
+                if (e.type === 'success') cls = 'msg-green';
+                else if (e.type === 'error') cls = 'msg-red';
+                else if (e.type === 'warning') cls = 'msg-orange';
+                else if (e.type === 'bypass') cls = 'msg-purple';
+                return `<div class="log-entry"><span class="time">[${e.time}]</span> <span class="${cls}">${e.message}</span></div>`;
+            }).join('');
+            logCount.textContent = logs.length + ' logs';
+        }
+
+        function showResult(data) {
+            currentResult = data;
+            resultCard.classList.add('show');
+            resUid.textContent = data.uid || '---';
+            resKey.textContent = data.key || '---';
+            resExpired.textContent = data.expired || '2099-12-31';
+            resVip.textContent = data.vip_level !== undefined ? data.vip_level : '999';
+            resStatus.textContent = data.status || 'Active';
+            isActivated = true;
+
+            // Lưu vào database
+            const existing = database.find(item => item.uid === data.uid);
+            if (existing) {
+                existing.key = data.key;
+                existing.expired = data.expired || '2099-12-31';
+                existing.vip = data.vip_level || 999;
+                existing.status = 'active';
+                existing.bypassed = data.bypassed || false;
+                existing.timestamp = getTimestamp();
+            } else {
+                database.push({
+                    uid: data.uid,
+                    key: data.key,
+                    expired: data.expired || '2099-12-31',
+                    vip: data.vip_level || 999,
+                    status: 'active',
+                    bypassed: data.bypassed || false,
+                    timestamp: getTimestamp()
+                });
+            }
+            saveDatabase();
+        }
+
+        function resetAll() {
+            isActivated = false;
+            isLoading = false;
+            currentResult = null;
+            resultCard.classList.remove('show');
+            setStatus('Sẵn sàng', '');
+            uidInput.value = '';
+            keyInput.value = '';
+        }
+
+        // ---- Send request ----
+        function sendRequest(uid, key, callback) {
+            const params = new URLSearchParams();
+            params.append('action', 'activate');
+            params.append('uid', uid);
+            params.append('key', key);
+            params.append('timestamp', String(Date.now()));
+
+            const url = BASE_URL + '?' + params.toString();
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X)'
+                },
+                body: params.toString()
+            })
+            .then(res => res.json().catch(() => res.text()))
+            .then(data => {
+                let responseText = typeof data === 'string' ? data : JSON.stringify(data);
+                addLog('📦 Response: ' + responseText.substring(0, 150), 'info');
+
+                let parsed = typeof data === 'object' ? data : null;
+                try { if (typeof data === 'string') parsed = JSON.parse(data); } catch(e) {}
+
+                let success = false;
+                if (parsed && parsed.status && parsed.status.toLowerCase() === 'success') {
+                    success = true;
+                    const d = parsed.data || {};
+                    showResult({
+                        uid: d.uid || uid,
+                        key: d.key || key,
+                        expired: d.expired || '2099-12-31',
+                        vip_level: d.vip_level || 999,
+                        status: 'active',
+                        bypassed: false
+                    });
+                    setStatus('✅ KÍCH HOẠT THÀNH CÔNG!', 'success');
+                    addLog('✅ Kích hoạt thành công với key: ' + key, 'success');
+                } else {
+                    const msg = parsed && parsed.message ? parsed.message : 'Server từ chối';
+                    setStatus('❌ Thất bại: ' + msg, 'error');
+                    addLog('❌ Thất bại: ' + msg, 'error');
+                }
+                if (callback) callback(success, parsed);
+            })
+            .catch(err => {
+                setStatus('❌ Lỗi kết nối: ' + err.message, 'error');
+                addLog('❌ Lỗi: ' + err.message, 'error');
+                if (callback) callback(false, null);
+            });
+        }
+
+        // ---- Actions ----
+        function doActivate() {
+            if (isLoading) return;
+            let uid = uidInput.value.trim();
+            if (!uid) {
+                setStatus('Vui lòng nhập UID', 'error');
+                addLog('⚠️ Thiếu UID', 'warning');
+                return;
+            }
+            let key = keyInput.value.trim() || generateFakeKey();
+            isLoading = true;
+            setStatus('⏳ Đang kích hoạt...', 'loading');
+            addLog('🔄 Kích hoạt với UID: ' + uid + ', Key: ' + key, 'info');
+            btnActivate.disabled = true;
+            btnBrute.disabled = true;
+            btnBypass.disabled = true;
+
+            sendRequest(uid, key, function(success) {
+                isLoading = false;
+                btnActivate.disabled = false;
+                btnBrute.disabled = false;
+                btnBypass.disabled = false;
+            });
+        }
+
+        function doBruteForce() {
+            if (isLoading) return;
+            let uid = uidInput.value.trim();
+            if (!uid) {
+                setStatus('Vui lòng nhập UID', 'error');
+                addLog('⚠️ Thiếu UID cho brute force', 'warning');
+                return;
+            }
+            isLoading = true;
+            setStatus('⏳ Brute force 50 key...', 'loading');
+            addLog('🔨 Bắt đầu brute force 50 key cho UID: ' + uid, 'info');
+            btnActivate.disabled = true;
+            btnBrute.disabled = true;
+            btnBypass.disabled = true;
+
+            let found = false;
+            let attempts = 0;
+            const MAX = 50;
+
+            function tryNext() {
+                if (found || attempts >= MAX) {
+                    isLoading = false;
+                    btnActivate.disabled = false;
+                    btnBrute.disabled = false;
+                    btnBypass.disabled = false;
+                    if (!found) {
+                        setStatus('❌ Brute force thất bại sau ' + MAX + ' key', 'error');
+                        addLog('❌ Không tìm thấy key hợp lệ', 'error');
+                    }
+                    return;
+                }
+                attempts++;
+                const key = generateFakeKey();
+                addLog('🔍 Thử #' + attempts + ': ' + key, 'info');
+
+                sendRequest(uid, key, function(success) {
+                    if (success) {
+                        found = true;
+                        isLoading = false;
+                        btnActivate.disabled = false;
+                        btnBrute.disabled = false;
+                        btnBypass.disabled = false;
+                        setStatus('✅ Brute thành công! Key: ' + key, 'success');
+                        addLog('✅ Brute thành công với key: ' + key, 'success');
+                    } else {
+                        setTimeout(tryNext, 120);
+                    }
+                });
+            }
+            tryNext();
+        }
+
+        function doLocalBypass(uidParam) {
+            if (isLoading) return;
+            let uid = uidParam || uidInput.value.trim();
+            if (!uid) {
+                setStatus('Vui lòng nhập UID', 'error');
+                addLog('⚠️ Thiếu UID cho local bypass', 'warning');
+                return;
+            }
+            isLoading = true;
+            setStatus('⏳ Đang bypass local...', 'loading');
+            addLog('⚡ Local bypass cho UID: ' + uid, 'bypass');
+            btnActivate.disabled = true;
+            btnBrute.disabled = true;
+            btnBypass.disabled = true;
+
+            setTimeout(function() {
+                const fakeKey = 'BYPASS-' + Date.now().toString(36).toUpperCase();
+                const fakeData = {
+                    uid: uid,
+                    key: fakeKey,
+                    expired: '2099-12-31',
+                    vip_level: 999,
+                    status: 'active',
+                    bypassed: true
+                };
+                showResult(fakeData);
+                setStatus('✅ BYPASS THÀNH CÔNG (Local)', 'success');
+                addLog('✅ Bypass local thành công cho UID: ' + uid, 'success');
+                addLog('📋 Key: ' + fakeKey, 'info');
+                isLoading = false;
+                btnActivate.disabled = false;
+                btnBrute.disabled = false;
+                btnBypass.disabled = false;
+            }, 300);
+        }
+
+        function generateKey() {
+            const key = generateFakeKey();
+            keyInput.value = key;
+            setStatus('✅ Đã tạo key: ' + key, 'success');
+            addLog('🎲 Tạo key ngẫu nhiên: ' + key, 'info');
+        }
+
+        // ---- Management ----
+        function renderManagement() {
+            const search = mgmtSearch.value.toLowerCase().trim();
+            let filtered = database;
+            if (search) {
+                filtered = database.filter(item => 
+                    item.uid.includes(search) || 
+                    (item.key && item.key.toLowerCase().includes(search))
+                );
+            }
+
+            if (filtered.length === 0) {
+                mgmtList.innerHTML = `<div style="text-align:center;padding:30px;color:#444;font-size:13px;">
+                    ${database.length === 0 ? 'Chưa có dữ liệu. Hãy kích hoạt hoặc thêm UID.' : 'Không tìm thấy kết quả.'}
+                </div>`;
+                mgmtCount.textContent = '0 UID';
+                return;
+            }
+
+            mgmtList.innerHTML = filtered.map(item => {
+                const statusClass = item.status === 'active' ? 'active' : (item.status === 'expired' ? 'expired' : 'inactive');
+                const statusLabel = item.status === 'active' ? '✅ Active' : (item.status === 'expired' ? '⛔ Hết hạn' : '❌ Inactive');
+                const bypassBadge = item.bypassed ? ' [BYPASS]' : '';
+                return `
+                    <div class="mgmt-item" data-uid="${item.uid}">
+                        <div class="info">
+                            <span class="uid">${item.uid}${bypassBadge}</span>
+                            <span class="key">Key: ${item.key || 'N/A'} · Hết hạn: ${item.expired || 'N/A'}</span>
+                            <span style="font-size:10px;color:#444;">${item.timestamp || ''}</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <span class="status-badge ${statusClass}">${statusLabel}</span>
+                            <button class="btn btn-success btn-sm mgmt-bypass" data-uid="${item.uid}" style="padding:2px 10px;font-size:10px;">⚡</button>
+                            <button class="btn btn-danger btn-sm mgmt-delete" data-uid="${item.uid}" style="padding:2px 10px;font-size:10px;">✕</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            mgmtCount.textContent = filtered.length + ' / ' + database.length + ' UID';
+
+            // Event listeners cho các nút trong list
+            document.querySelectorAll('.mgmt-bypass').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const uid = this.dataset.uid;
+                    doLocalBypass(uid);
+                });
+            });
+            document.querySelectorAll('.mgmt-delete').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const uid = this.dataset.uid;
+                    if (confirm('Xóa UID ' + uid + '?')) {
+                        database = database.filter(item => item.uid !== uid);
+                        saveDatabase();
+                        addLog('🗑️ Đã xóa UID: ' + uid, 'warning');
+                        renderManagement();
+                        updateStats();
+                    }
+                });
+            });
+
+            updateStats();
+        }
+
+        function updateStats() {
+            statTotal.textContent = database.length;
+            const activeCount = database.filter(item => item.status === 'active').length;
+            statActive.textContent = activeCount;
+            const bypassCount = database.filter(item => item.bypassed === true).length;
+            statBypass.textContent = bypassCount;
+        }
+
+        function addUIDManually() {
+            const uid = prompt('Nhập UID cần thêm:');
+            if (!uid) return;
+            if (database.find(item => item.uid === uid)) {
+                alert('UID đã tồn tại!');
+                return;
+            }
+            database.push({
+                uid: uid,
+                key: 'PENDING',
+                expired: '2099-12-31',
+                vip: 0,
+                status: 'inactive',
+                bypassed: false,
+                timestamp: getTimestamp()
+            });
+            saveDatabase();
+            addLog('➕ Đã thêm UID: ' + uid, 'info');
+            renderManagement();
+            updateStats();
+        }
+
+        function bypassAll() {
+            if (database.length === 0) {
+                alert('Chưa có UID nào!');
+                return;
+            }
+            if (!confirm('Bypass tất cả ' + database.length + ' UID?')) return;
+            database.forEach(item => {
+                item.status = 'active';
+                item.bypassed = true;
+                item.key = 'BYPASS-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+                item.expired = '2099-12-31';
+                item.vip = 999;
+            });
+            saveDatabase();
+            addLog('⚡ Đã bypass tất cả ' + database.length + ' UID', 'success');
+            renderManagement();
+            updateStats();
+            setStatus('✅ Bypass tất cả thành công!', 'success');
+        }
+
+        function clearAllData() {
+            if (database.length === 0) {
+                alert('Không có dữ liệu để xóa.');
+                return;
+            }
+            if (!confirm('Xóa toàn bộ dữ liệu (' + database.length + ' UID)?')) return;
+            database = [];
+            saveDatabase();
+            addLog('🗑️ Đã xóa toàn bộ dữ liệu', 'warning');
+            renderManagement();
+            updateStats();
+            resetAll();
+        }
+
+        function exportData() {
+            if (database.length === 0) {
+                alert('Không có dữ liệu để export.');
+                return;
+            }
+            const json = JSON.stringify(database, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'proxyvip_data_' + Date.now() + '.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            addLog('📤 Đã export ' + database.length + ' UID', 'info');
+        }
+
+        // ---- WebView ----
+        function injectBypassScript() {
+            try {
+                const iframeDoc = bypassIframe.contentDocument || bypassIframe.contentWindow.document;
+                if (!iframeDoc) {
+                    addLog('❌ Không thể truy cập iframe (CORS)', 'error');
+                    return;
+                }
+                const script = iframeDoc.createElement('script');
+                script.textContent = `
+                    (function() {
+                        console.log('[BYPASS] Inject script');
+                        const keyInput = document.querySelector('input[name="key"]');
+                        if (keyInput) {
+                            const fakeKey = 'VIP-' + Math.random().toString(36).substring(2,10).toUpperCase() + '-' + Date.now().toString().slice(-6);
+                            keyInput.value = fakeKey;
+                            console.log('[BYPASS] Key:', fakeKey);
+                        }
+                        const uidInput = document.querySelector('input[name="uid"]');
+                        if (uidInput && !uidInput.value) {
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const uidFromURL = urlParams.get('uid');
+                            if (uidFromURL) uidInput.value = uidFromURL;
+                        }
+                        setTimeout(() => {
+                            const btn = document.querySelector('button[type="submit"], input[type="submit"], .btn-activate');
+                            if (btn) btn.click();
+                        }, 800);
+                    })();
+                `;
+                iframeDoc.body.appendChild(script);
+                addLog('💉 Đã inject bypass script vào iframe', 'success');
+            } catch(e) {
+                addLog('❌ Lỗi inject: ' + e.message, 'error');
+            }
+        }
+
+        function reloadWebview() {
+            const currentSrc = bypassIframe.src;
+            bypassIframe.src = 'about:blank';
+            setTimeout(() => {
+                bypassIframe.src = currentSrc;
+                addLog('🔄 Đã tải lại webview', 'info');
+            }, 200);
+        }
+
+        function autoInject() {
+            if (autoInjectTimer) {
+                clearInterval(autoInjectTimer);
+                autoInjectTimer = null;
+                btnAutoInject.textContent = '🤖 Auto Inject';
+                addLog('⏹️ Dừng auto inject', 'warning');
+                return;
+            }
+            btnAutoInject.textContent = '⏹️ Dừng';
+            addLog('🤖 Bắt đầu auto inject (mỗi 5s)', 'info');
+            autoInjectTimer = setInterval(function() {
+                injectBypassScript();
+            }, 5000);
+            // Inject ngay lần đầu
+            setTimeout(injectBypassScript, 500);
+        }
+
+        // ---- Tab switching ----
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+                const target = document.getElementById(this.dataset.tab);
+                if (target) target.classList.add('active');
+            });
+        });
+
+        // ---- Event binding ----
+        btnActivate.addEventListener('click', doActivate);
+        btnBrute.addEventListener('click', doBruteForce);
+        btnBypass.addEventListener('click', function() { doLocalBypass(); });
+        btnGenKey.addEventListener('click', generateKey);
+        btnReset.addEventListener('click', resetAll);
+        btnClearLogs.addEventListener('click', function() {
+            logs = [];
+            renderLogs();
+            addLog('🗑️ Logs đã bị xóa', 'warning');
+        });
+        btnReloadWebview.addEventListener('click', reloadWebview);
+        btnInjectScript.addEventListener('click', injectBypassScript);
+        btnAutoInject.addEventListener('click', autoInject);
+        btnAddUID.addEventListener('click', addUIDManually);
+        btnBypassAll.addEventListener('click', bypassAll);
+        btnClearAll.addEventListener('click', clearAllData);
+        btnExportData.addEventListener('click', exportData);
+
+        uidInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') doActivate();
+        });
+        keyInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') doActivate();
+        });
+        mgmtSearch.addEventListener('input', renderManagement);
+
+        // ---- Webview load handler ----
+        bypassIframe.addEventListener('load', function() {
+            addLog('🌐 Webview đã tải xong', 'info');
+        });
+
+        // ---- Init ----
+        loadDatabase();
+        addLog('📌 Hệ thống sẵn sàng', 'info');
+        addLog('💾 Đã tải ' + database.length + ' UID từ bộ nhớ', 'info');
+
+        // Tạo UID mẫu
+        uidInput.placeholder = 'Nhập UID... (vd: ' + generateFakeUID() + ')';
+
+        console.log('[HTML APP] ProxyVIP Activator Full đã sẵn sàng');
+        console.log('[HTML APP] Database:', database);
+
+    })();
+</script>
+
+</body>
+</html>
